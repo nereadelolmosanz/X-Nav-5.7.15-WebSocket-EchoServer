@@ -21,6 +21,7 @@ class SimpleEcho(WebSocket):
 
         try:
             self.sendMessage(str(self.data))
+            print "\nHANDLE SENDING:\n" + self.data + "\n"
         except Exception as n:
             print n
 
@@ -41,6 +42,8 @@ class SimpleChat(WebSocket):
             if client != self:
                 try:
                     client.sendMessage(str(self.address[0]) + ' - ' + str(self.data))
+                    print "\nCLIENT SENDING:\n" + self.address[0] + "\n" + self.data + "\n"
+
                 except Exception as n:
                     print n
 
@@ -50,6 +53,7 @@ class SimpleChat(WebSocket):
             if client != self:
                 try:
                     client.sendMessage(str(self.address[0]) + ' - connected')
+                    #print "\nCLIENT HandleConnected:\n" + self.address[0] + "\n"
                 except Exception as n:
                     print n
 
@@ -59,6 +63,7 @@ class SimpleChat(WebSocket):
             if client != self:
                 try:
                     client.sendMessage(str(self.address[0]) + ' - disconnected')
+                    #print "\nCLIENT HandleClose:\n" + self.address[0] + "\n" + self.data + "\n"
                 except Exception as n:
                     print n
 
